@@ -15,6 +15,11 @@ export default async function CoursePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+
+  if (id === "broken") {
+    throw new Error("Failed to load this course.");
+  }
+
   const course = await getCourse(id);
 
   if (!course) {
