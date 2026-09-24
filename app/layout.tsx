@@ -20,14 +20,14 @@ export default function RootLayout({
     <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className="min-h-screen bg-slate-50 text-slate-900">
         <header className="border-b border-slate-200 bg-white">
-          <nav className="mx-auto flex max-w-3xl gap-6 px-6 py-4 text-sm font-medium">
-            <Link href="/" className="hover:text-blue-600">
+          <nav className="mx-auto flex max-w-6xl gap-4 px-3 py-4 text-sm font-medium">
+            <Link href="/" className="px-3 py-2 rounded-md hover:bg-slate-100">
               Home
             </Link>
-            <Link href="/courses" className="hover:text-blue-600">
+            <Link href="/courses" className="px-3 py-2 rounded-md hover:bg-slate-100">
               Courses
             </Link>
-            <Link href="/about" className="hover:text-blue-600">
+            <Link href="/about" className="px-3 py-2 rounded-md hover:bg-slate-100">
               About
             </Link>
           </nav>
