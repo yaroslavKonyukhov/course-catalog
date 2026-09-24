@@ -1,8 +1,8 @@
 # Course Catalog
 
-Semester project for the Advanced Web Technologies course, Lab 1. A course
-catalog built with Next.js 16 (App Router), React 19, TypeScript and
-Tailwind CSS.
+Semester project for the Advanced Web Technologies course, Labs 1–2. A course
+catalog built with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS
+and shadcn/ui.
 
 ## Running the project
 
@@ -54,8 +54,31 @@ The app starts on http://localhost:3000.
 
 Deployment to Vercel was not done.
 
+## Lab 2: styling with Tailwind CSS and shadcn/ui
+
+Lab 2 styled the course cards with shadcn/ui `Card` and `Button`, made the course
+list a responsive grid (1 / 2 / 3 columns), and styled the navigation with spacing,
+hover states and a highlighted current page.
+
+- shadcn/ui was set up with `npx shadcn@latest init` (default answers) and
+  `npx shadcn@latest add button card`; the components live in `components/ui/`.
+- `components/CourseCard.tsx` uses `Card`, `CardHeader`, `CardTitle`,
+  `CardContent` and a ghost `Button`, and is still a Server Component.
+- The grid classes `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3` sit on the list
+  container in `components/CourseSearch.tsx`, which renders the course list.
+- `components/NavBar.tsx` is a Client Component that highlights the current page
+  with `usePathname()`, so `app/layout.tsx` stays a Server Component.
+
+Bonus tasks:
+
+- a `brand` color in the `@theme` block of `app/globals.css`, used by a new
+  `brand` variant in `components/ui/button.tsx` on the home page link;
+- dark mode that follows the system setting, using the `dark:` prefix;
+- a shadcn/ui `Skeleton` in `app/courses/[id]/loading.tsx`.
+
 ## Notes
 
-`'use client'` is used in three files: `components/LikeButton.tsx` (required by
-the lab), `components/CourseSearch.tsx` and `app/courses/error.tsx` (both
-required by the bonus tasks — an Error Boundary has to be a Client Component).
+`'use client'` is used in four files: `components/LikeButton.tsx` (required by
+Lab 1), `components/NavBar.tsx` (optional part of Lab 2),
+`components/CourseSearch.tsx` and `app/courses/error.tsx` (both required by the
+Lab 1 bonus tasks — an Error Boundary has to be a Client Component).
