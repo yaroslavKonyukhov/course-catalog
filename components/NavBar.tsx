@@ -25,8 +25,8 @@ export function NavBar() {
           href={link.href}
           aria-current={isActive(link.href) ? "page" : undefined}
           className={cn(
-            "px-3 py-2 rounded-md hover:bg-slate-100",
-            isActive(link.href) && "bg-slate-100 text-blue-600"
+            "px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800",
+            isActive(link.href) && "bg-slate-100 text-blue-600 dark:bg-slate-800 dark:text-blue-400"
           )}
         >
           {link.label}

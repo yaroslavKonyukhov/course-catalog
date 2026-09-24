@@ -18,8 +18,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className="min-h-screen bg-slate-50 text-slate-900">
-        <header className="border-b border-slate-200 bg-white">
+      <body className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+        <header className="border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
           <NavBar />
         </header>
         <main className="mx-auto max-w-6xl px-6 py-10">{children}</main>

@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <section className="flex flex-col items-start gap-4">
       <h1 className="text-3xl font-semibold">Course Catalog</h1>
-      <p className="text-slate-600">
+      <p className="text-slate-600 dark:text-slate-400">
         Welcome! Here you can browse the courses that make up the Advanced Web
         Technologies programme.
       </p>

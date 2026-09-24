@@ -16,7 +16,7 @@ export function LikeButton({ initialLikes }: LikeButtonProps) {
   return (
     <button
       onClick={handleClick}
-      className="w-fit rounded border border-slate-300 bg-white px-4 py-2 text-sm hover:border-rose-500"
+      className="w-fit rounded border border-slate-300 bg-white px-4 py-2 text-sm hover:border-rose-500 dark:border-slate-700 dark:bg-slate-900"
     >
       ❤ {likes}
     </button>
