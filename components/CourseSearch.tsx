@@ -34,7 +34,7 @@ export function CourseSearch({ items }: CourseSearchProps) {
       {found.length === 0 ? (
         <p className="text-slate-500">No courses match your search.</p>
       ) : (
-        <ul className="flex flex-col gap-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {found.map((item) => (
             <li key={item.id}>{item.card}</li>
           ))}
