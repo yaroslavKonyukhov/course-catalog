@@ -211,6 +211,33 @@ Disable cache on, and the protocol from the lab: open `/filter`, click ❤ on
 - Cause: there is no connection at all, CORS is not involved.
 - How I found it: step 2 — the status is a connection failure, not a CORS error.
 
+## Lab 5 bonus tasks
+
+- **Types from OpenAPI (kept).** `lib/schema.d.ts` is generated from the backend
+  with `npx openapi-typescript http://localhost:8000/openapi.json -o lib/schema.d.ts`
+  (the backend must be running), and `lib/courses.ts` takes the type from it:
+  `export type Course = components["schemas"]["Course"]`. The file is generated,
+  so it is never edited by hand. Experiment: after renaming `is_elective` to
+  `is_optional` in `models.py` and regenerating, `npx tsc --noEmit` reported
+  `components/ElectiveFilter.tsx(36,45): error TS2339: Property 'isElective' does
+  not exist on type '{ …; isOptional: boolean; … }'`. The rename was rolled back.
+- **Rewrites instead of CORS (experiment, rolled back).** With a
+  `rewrites` rule `/api/:path*` → `http://localhost:8000/:path*` in
+  `next.config.ts`, `ElectiveFilter` requesting `/api/courses` and
+  `CORSMiddleware` commented out, the filter kept working: Network showed
+  `GET http://localhost:3000/api/courses` and `…/api/courses?is_elective=true`,
+  both 200, and the backend log showed the same requests coming from the Next.js
+  process. The like and the form still used `NEXT_PUBLIC_API_URL`, so they went
+  straight to port 8000 and were blocked again: `POST …/like` — CORS error,
+  `OPTIONS /enrollments` — 405. The browser only skips CORS for requests that go
+  to the page's own origin.
+- **Frozen data (experiment, rolled back).** Without `cache: "no-store"` in
+  `getCourses`, `npm run build` marked `/courses` as `○`. After three likes
+  through the API (21 → 24) `next start` still served `❤ 21` on `/courses`,
+  while `/courses/web-security` showed `❤ 24`. The course page stays `ƒ`: it is
+  a dynamic segment with no `generateStaticParams`, so it is rendered on every
+  request, and `getCourse` still uses `cache: "no-store"`.
+
 ## Lab 1 bonus tasks
 
 - `app/courses/error.tsx` — an Error Boundary for the courses segment.
