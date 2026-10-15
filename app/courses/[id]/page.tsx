@@ -1,13 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LikeButton } from "@/components/LikeButton";
-import { getCourse, getCourses } from "@/lib/courses";
-
-export async function generateStaticParams() {
-  const courses = await getCourses();
-
-  return courses.map((course) => ({ id: course.id }));
-}
+import { getCourse } from "@/lib/courses";
 
 export default async function CoursePage({
   params,
