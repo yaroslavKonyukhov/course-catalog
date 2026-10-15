@@ -1,11 +1,6 @@
-export type Course = {
-  id: string;
-  title: string;
-  description: string;
-  credits: number;
-  isElective: boolean;
-  likes: number;
-};
+import type { components } from "@/lib/schema";
+
+export type Course = components["schemas"]["Course"];
 
 export type Enrollment = {
   id: number;
